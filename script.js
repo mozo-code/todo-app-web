@@ -19,16 +19,18 @@ function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 bombbtn.addEventListener("click", function() {
-    tasklist.innerHTML = "";
-    completedlist.innerHTML = "";
-    count = 0;
-    tasknb.textContent = count;
-    compcount = 0;
-    compnb.textContent = compcount;
-    tasks = [];
-    saveTasks();
-    message.textContent = "Deleted Everything.";
-
+    let userconfirm = confirm("This will reset everything(ALL TASKS DELETED)");
+    if (userconfirm === true) {
+        tasklist.innerHTML = "";
+        completedlist.innerHTML = "";
+        count = 0;
+        tasknb.textContent = count;
+        compcount = 0;
+        compnb.textContent = compcount;
+        tasks = [];
+        saveTasks();
+        message.textContent = "Deleted Everything.";
+    }
 })
  
 // Builds one task (on screen) AND its matching data object (in the tasks array).
