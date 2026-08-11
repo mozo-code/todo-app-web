@@ -11,8 +11,7 @@ let bombbtn = document.getElementById("bomb");
 let count = 0;
 let compcount = 0;
  
-// This array is the single "source of truth" for what's saved.
-// Every task on screen has a matching object in here: { text, note, completed }
+
 let tasks = [];
  
 function saveTasks() {
@@ -33,8 +32,7 @@ bombbtn.addEventListener("click", function() {
     }
 })
  
-// Builds one task (on screen) AND its matching data object (in the tasks array).
-// Used both when you click "Add task" and when reloading saved tasks on page load.
+
 function createTask(taskText, noteText, isCompleted) {
     noteText = noteText || "";
     isCompleted = isCompleted || false;
@@ -61,7 +59,7 @@ function createTask(taskText, noteText, isCompleted) {
     complete.id = "complete";
     complete.textContent = "✓";
  
-    // The data object this task's buttons will keep updated
+
     let taskObj = { text: taskText, note: noteText, completed: isCompleted };
     tasks.push(taskObj);
  
@@ -159,7 +157,7 @@ function createTask(taskText, noteText, isCompleted) {
     list.appendChild(complete);
  
     if (isCompleted) {
-        // Rebuild a task that was already completed when the page was last open
+
         completedlist.appendChild(list);
         renamebtn.remove();
         note.disabled = true;
@@ -189,7 +187,7 @@ addtaskbtn.addEventListener("click", function () {
     message.textContent = "Task added successfully";
 });
  
-// On page load: read whatever was saved, and rebuild the screen from it.
+
 let savedTasks = localStorage.getItem("tasks");
 if (savedTasks != null) {
     let parsed = JSON.parse(savedTasks);
